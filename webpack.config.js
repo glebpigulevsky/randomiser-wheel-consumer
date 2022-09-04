@@ -4,9 +4,10 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: argv.mode === "development"
-    ? "http://localhost:8080/"
-    : "https://randomiser-wheel-mf.vercel.app/",,
+    publicPath:
+      argv.mode === "development"
+        ? "http://localhost:8080/"
+        : "https://randomiser-wheel-consumer.vercel.app/",
   },
 
   resolve: {
@@ -46,7 +47,8 @@ module.exports = (_, argv) => ({
       name: "wrapper",
       filename: "remoteEntry.js",
       remotes: {
-        spinner: "spinner@https://randomiser-wheel-mf.vercel.app/remoteEntry.js",
+        spinner:
+          "spinner@https://randomiser-wheel-mf.vercel.app/remoteEntry.js",
       },
       exposes: {},
       shared: {
